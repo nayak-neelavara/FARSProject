@@ -1,0 +1,23 @@
+---
+title: "Building R Packages Week 4 Project"
+author: "Ganapathi Nayak K"
+date: "20 May 2018"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This document is a part of the Week 4 assignment in Coursera's course on Building R Packages.
+
+We are required to provide documentation to some functions, package the result and load it on github. The criteria are:
+
+ 1. Write a vignette to include in your package using knitr and R Markdown
+ 2. Write at least one test written using testthat
+ 3. Put your package on GitHub
+ 4. Set up the repository so that the package can be checked and built on Travis
+ 
+Once your package has built on Travis and the build is passing with no errors, warnings, or notes you should add your Travis badge to the README.md file of your package repository.
+
+The functions in this package are designed to process csv file data from the Fatality Analysis Reporting System (FARS). Available functionality allows us to query file names, load files, if available, collect total incidents by month and display them on a map.

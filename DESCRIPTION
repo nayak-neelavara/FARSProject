@@ -1,0 +1,21 @@
+Package: FARSProject
+Type: Package
+Title: Fatality Analysis Reporting System (FARS)
+Version: 0.1.0
+Author: Ganapathi Nayak K <nayak.gnk@manipal.edu>
+Maintainer: Ganapathi Nayak K <nayak.gnk@manipal.edu>
+Description: Reads a Fatality Analysis Reporting System (FARS) data file in CSV format and 
+    creates a tidyverse tibble from it.
+License: None
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: 
+    dplyr,
+    tidyr,
+    readr,
+    maps,
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
