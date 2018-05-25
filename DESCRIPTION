@@ -6,7 +6,7 @@ Author: Ganapathi Nayak K <nayak.gnk@manipal.edu>
 Maintainer: Ganapathi Nayak K <nayak.gnk@manipal.edu>
 Description: Reads a Fatality Analysis Reporting System (FARS) data file in CSV format and 
     creates a tidyverse tibble from it.
-License: None
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
