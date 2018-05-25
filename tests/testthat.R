@@ -1,5 +1,4 @@
 library(testthat)
 library(FARSProject)
 
-test_check("testthat")
-
+test_check("FARSProject")

@@ -2,23 +2,33 @@
 % Please edit documentation in R/fars_functions.R
 \name{fars_read}
 \alias{fars_read}
-\title{Read NHTSA FARS data file}
+\title{Read FARS Data.}
 \usage{
 fars_read(filename)
 }
 \arguments{
-\item{filename}{A path to a file or a connection.
-Compressed files in with  .gz, .bz2, .xz, or .zip formats supported.}
+\item{filename}{A character string giving the filename of the FARS data.}
 }
 \value{
-Data frame.
+This function returns a tibble containing the FARS data. If an
+  incorrect filename is entered the function will stop.
 }
 \description{
-Reads a Fatality Analysis Reporting System (FARS) data file in CSV format and creates a tidyverse tibble from it.
+\code{fars_read} reads FARS data into the environment.
+}
+\details{
+This function reads data from the  US National Highway Traffic Safety
+  Administration's Fatality Analysis Reporting System (FARS), given a
+  filename for the data. It returns a tibble of the data. For this function
+  to work properly, a filename pointing to an existing file must be given.
 }
 \examples{
+full_filename <- system.file('./data/', 'accident_2013.csv.bz2',
+                             package = 'FARSProject')
+fars_read(filename = full_filename)
+
 \dontrun{
-fars_read("./data//accident_2013.csv.bz2")
+fars_read(filename = 'filedoesnotexist')
 }
 
 }

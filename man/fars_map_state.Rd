@@ -2,28 +2,35 @@
 % Please edit documentation in R/fars_functions.R
 \name{fars_map_state}
 \alias{fars_map_state}
-\title{Draw map of NHTSA FARS accidents}
+\title{Map State Motor Vehicle Fatalities.}
 \usage{
 fars_map_state(state.num, year)
 }
 \arguments{
-\item{state.num}{USA state number, numeric.}
+\item{state.num}{Numerical code for US state.}
 
-\item{year}{Year of ovservations, numeric.}
-}
-\value{
-No return value (NULL).
+\item{year}{An integer, or a string or numeric that can be coerced to a string,
+of the year of interest.}
 }
 \description{
-Reads Fatality Analysis Reporting System (FARS) data files and plots maps of accidents for the specified state and year
-with the graphics package.
+\code{fars_map_state} maps state motor vehicle fatalities given a year and
+  state id number.
 }
 \details{
-Will stop with error if given state number is invalid. Will warn if no data are available for a given year.
+This function takes a state number and a year, and draws
+  a state outline with dots to represent the location of motor vehicle
+  fatalities for that year.  This function will throw an error if an invalid
+  state number is chosen or the chosen year's data does not exist.
+
+You must have library(mapdata) loaded in your namespace for this to work.
 }
 \examples{
+library(mapdata)
+fars_map_state(12, 2014)
+fars_map_state(36, 2014)
+
 \dontrun{
-fars_map_state(1, 2015)
+fars_map_state(3, 2014)   # error
 }
 
 }

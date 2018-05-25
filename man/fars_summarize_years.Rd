@@ -2,23 +2,39 @@
 % Please edit documentation in R/fars_functions.R
 \name{fars_summarize_years}
 \alias{fars_summarize_years}
-\title{NHTSA FARS summary: number of fatal injuries per month for the specified years}
+\title{Produce a Summary of FARS Files.}
 \usage{
 fars_summarize_years(years)
 }
 \arguments{
-\item{years}{A vector of the years of observations to read.}
+\item{years}{Vector of years' FARS files to open.  Vector members must be
+an integer, or a string or numeric that can be coerced to a string.}
 }
 \value{
-A tibble.
+This function returns tibble where the first column is the month,
+  the second and following columns are the requested years, and the
+  rows for the year columns are the number of FARS observations for
+  that month/year combination.  The returned columns are only for years
+  with valid FARS data. If no valid years are found, the function
+  well error out.
 }
 \description{
-Reads Fatality Analysis Reporting System (FARS) data files and builds summary table containing
-number of fatal injuries suffered in motor vehicle traffic crashes for each month of the specified years.
+\code{fars_summarize_years} produces a summary tibble of FARS years and
+  months given a vector of years.
+}
+\details{
+This function takes a vector of years, pulls the FARS data for
+  those years, and then produces a summary tibble. The summary tibble shows
+  the number of observations for each month/year combination for the
+  extracted FARS data. For this function to work properly, the years must
+  be years with valid data.
 }
 \examples{
+fars_summarize_years(years = c(2013, 2014, 2015))
+fars_summarize_years(years = 2013)
+
 \dontrun{
-fars_summarize_years(2013:2015)
+fars_summarize_years(years = 2000)
 }
 
 }

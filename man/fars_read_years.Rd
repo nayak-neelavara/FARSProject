@@ -2,28 +2,40 @@
 % Please edit documentation in R/fars_functions.R
 \name{fars_read_years}
 \alias{fars_read_years}
-\title{Get month and year variables from the NHTSA FARS data for multiple years}
+\title{Read FARS files for one or more years.}
 \usage{
 fars_read_years(years)
 }
 \arguments{
-\item{years}{A vector of the years of observations to read.}
+\item{years}{Vector of years' FARS files to open.  Vector members must be
+an integer, or a string or numeric that can be coerced to a string,
+of the year of interest.}
 }
 \value{
-A list of tibbles, one tibble for each year specified in the parameter, contraining columns: MONTH, year.
+This function returns a list of tibbles, where each tibble contains
+  containing the year and month from the observations in the corresponding
+  year's FARS data.  If an invalid year is given, the corresponding
+  list will be NULL.
 }
 \description{
-Reads table data from one or more Fatality Analysis Reporting System (FARS) data files
-containing observations from the specified year(s) and returns month and year for each observation.
+\code{fars_read_years} produces a list of tibbles of FARS data, given an
+  input vector of years.
 }
 \details{
-Will warn if any of the specified years is invalid.
-
-Year value is taken from the parameter not from the data file.
+This function takes a vector of years and produces a list of tibbles,
+  where each tibble is that year's FARS file year and MONTH observations.
+  This is a simple function that strips all useful data out of the FARS
+  tables and produces a completely useless tibble, but is meant for
+  practice in the Coursera course.  For this function to work, valid
+  years should be entered. Invalid years will have a NULL entry in the
+  returned list.
 }
 \examples{
+fars_read_years(years = c(2013, 2014, 2015))
+fars_read_years(years = 2013)
+
 \dontrun{
-fars_read_years(2013:2015)
+fars_read_years(years = 2000) # error
 }
 
 }
