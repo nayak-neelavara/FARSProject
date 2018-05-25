@@ -9,14 +9,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' fars_read("./data//accident_2013.csv.bz2")
+#' fars_read("./data/accident_2013.csv.bz2")
 #' }
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
 #'
 #' @export
-
 fars_read <- function(filename) {
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
@@ -41,7 +40,6 @@ fars_read <- function(filename) {
 #' }
 #'
 #' @export
-
 make_filename <- function(year) {
   year <- as.integer(year)
   sprintf("accident_%d.csv.bz2", year)
@@ -68,7 +66,6 @@ make_filename <- function(year) {
 #' @importFrom dplyr %>% mutate select
 #'
 #' @export
-
 fars_read_years <- function(years) {
   lapply(years, function(year) {
     file <- make_filename(year)
@@ -101,7 +98,6 @@ fars_read_years <- function(years) {
 #' @importFrom tidyr spread
 #'
 #' @export
-
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
@@ -132,17 +128,16 @@ fars_summarize_years <- function(years) {
 #' @importFrom graphics points
 #'
 #' @export
-
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
   state.num <- as.integer(state.num)
 
   if(!(state.num %in% unique(data$STATE)))
-    stop("invalid STATE number: ", state.num)
+    stop("Invalid STATE number: ", state.num)
   data.sub <- dplyr::filter(data, STATE == state.num)
   if(nrow(data.sub) == 0L) {
-    message("no accidents to plot")
+    message("No accidents to plot")
     return(invisible(NULL))
   }
   is.na(data.sub$LONGITUD) <- data.sub$LONGITUD > 900
